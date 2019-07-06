@@ -51,7 +51,7 @@ int main(int argc, char **argv)
             break;
         case 'l':
             printf("You selected l!\n");
-            parsel(mem);
+            parseL(mem);
             break;
         case 'S':
             printf("You selected S!\n");
@@ -64,6 +64,4 @@ int main(int argc, char **argv)
             exit(0);
         }
     }
-
-    
 }

@@ -9,4 +9,6 @@
 #include <sys/stat.h>
 #include <fcntl.h> 
 
-void parsel(uint8_t *mem);
+void parseL(uint8_t *mem);
+char * getFileType(unsigned e_type);
+char * getFlags(unsigned p_flags);
