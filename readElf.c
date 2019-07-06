@@ -46,11 +46,9 @@ int main(int argc, char **argv)
     while ((opt = getopt(argc, argv, "hlSs")) != -1) {
         switch (opt) {
         case 'h':
-            printf("You selected h!\n");
             dispFileHdr(mem);
             break;
         case 'l':
-            printf("You selected l!\n");
             parseL(mem);
             break;
         case 'S':
