@@ -8,6 +8,7 @@
 #include <stdint.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include "programheader.h"
 
 int main(int argc, char **argv)
 {
@@ -30,12 +31,6 @@ int main(int argc, char **argv)
         exit(-1);
     }
 
-    mem = mmap(NULL, st.st_size, PROT_READ, MAP_PRIVATE, fd, 0);
-    if (mem == MAP_FAILED) {
-        perror("mmap");
-        exit(-1);
-    }
-
     while ((opt = getopt(argc, argv, "hlSs")) != -1) {
         switch (opt) {
         case 'h':
@@ -43,6 +38,7 @@ int main(int argc, char **argv)
             break;
         case 'l':
             printf("You selected l!\n");
+            parsel(mem);
             break;
         case 'S':
             printf("You selected S!\n");
