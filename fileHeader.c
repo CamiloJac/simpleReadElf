@@ -25,44 +25,29 @@ void dispFileHdr(uint8_t *mem)
         printf("%02x ", mem[i]);
     }
     printf("\n");
-    printf("  Class:%34s\n", ((ehdr->e_ident[EI_CLASS] == 0) ? "ELFNONE" : 
+    printf("  Class:%34s\n  Data:%59s\n  Version:%38s\n  OS/ABI:%43s\n  ABI Version:%24d\n  Type:%54s\n  Machine:%29d\n  Version:%#30x\n  Entry point address:%#20lx\n  Start of program headers:%12ld (bytes into file)\n  Start of section headers:%15ld (bytes into file)\n  Flags:%#30x\n  Size of this header:%17d (bytes)\n  Size of program headers:%13d (bytes)\n  Number of program headers:%10d\n  Size of section headers:%13d (bytes)\n  Number of section headers:%11d\n", 
+                            ((ehdr->e_ident[EI_CLASS] == 0) ? "ELFNONE" : 
                             (ehdr->e_ident[EI_CLASS] == 1) ? "ELF32" :
-                            "ELF64"));
-
-    printf("  Data:%59s\n", ((ehdr->e_ident[EI_DATA] == 0) ? "Unknown data format" :
+                            "ELF64"),
+                            ((ehdr->e_ident[EI_DATA] == 0) ? "Unknown data format" :
                             (ehdr->e_ident[EI_DATA] == 1) ? "2's complement, little endian" :
-                            "2's complement, big endian"));    
-    
-
-    printf("  Version:%38s\n", ((ehdr->e_ident[EI_VERSION] == 0) ? "0 (invalid)" : "1 (current)"));
-
-    printf("  OS/ABI:%43s\n", getOSABI(ehdr->e_ident[EI_OSABI])); 
-                            
-    printf("  ABI Version:%24d\n", ehdr->e_ident[EI_ABIVERSION]); 
-    
-    printf("  Type:%54s\n", getEType(ehdr->e_type));                             
-
-    printf("  Machine:%29d\n", ehdr->e_machine);
-    
-    printf("  Version:%#30x\n", ehdr->e_version);
-    
-    printf("  Entry point address:%#20lx\n", ehdr->e_entry);
-
-    printf("  Start of program headers:%12ld (bytes into file)\n", ehdr->e_phoff);
-    
-    printf("  Start of section headers:%15ld (bytes into file)\n", ehdr->e_shoff);
-
-    printf("  Flags:%#30x\n", ehdr->e_flags);
-
-    printf("  Size of this header:%17d (bytes)\n", ehdr->e_ehsize);
-
-    printf("  Size of program headers:%13d (bytes)\n", ehdr->e_phentsize);
-
-    printf("  Number of program headers:%10d\n", ehdr->e_phnum);
-
-    printf("  Size of section headers:%13d (bytes)\n", ehdr->e_shentsize);
-
-    printf("  Number of section headers:%11d\n", ehdr->e_shnum);
+                            "2's complement, big endian"),
+                             ((ehdr->e_ident[EI_VERSION] == 0) ? "0 (invalid)" : 
+                            "1 (current)"),
+                            getOSABI(ehdr->e_ident[EI_OSABI]),
+                            ehdr->e_ident[EI_ABIVERSION],
+                            getEType(ehdr->e_type),
+                            ehdr->e_machine,
+                            ehdr->e_version,
+                            ehdr->e_entry,
+                            ehdr->e_phoff,
+                            ehdr->e_shoff,
+                            ehdr->e_flags,    
+                            ehdr->e_ehsize,
+                            ehdr->e_phentsize,
+                            ehdr->e_phnum,
+                            ehdr->e_shentsize,
+                            ehdr->e_shnum);
 }
 
 
