@@ -11,7 +11,7 @@ void parsel(uint8_t *mem)
     ehdr = (Elf64_Ehdr *)mem;
 
     printf("Before phdr\n");
-
+    
     Elf64_Phdr *phdr;
     phdr = (Elf64_Phdr *)&mem[ehdr->e_phoff];
 

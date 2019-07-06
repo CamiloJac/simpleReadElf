@@ -9,6 +9,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include "programheader.h"
+#include "fileHeader.h"
 
 int main(int argc, char **argv)
 {
@@ -36,11 +37,17 @@ int main(int argc, char **argv)
         perror("mmap");
         exit(-1);
     }    
+    
+    if (mem[0] != 0x7f && strcmp(&mem[1], "ELF")) {
+        fprintf(stderr, "%s is not an ELF file\n", argv[1]);
+        exit(-1);
+    }
 
     while ((opt = getopt(argc, argv, "hlSs")) != -1) {
         switch (opt) {
         case 'h':
             printf("You selected h!\n");
+            dispFileHdr(mem);
             break;
         case 'l':
             printf("You selected l!\n");
