@@ -25,7 +25,13 @@ void dispFileHdr(uint8_t *mem)
         printf("%02x ", mem[i]);
     }
     printf("\n");
-    printf("  Class:%34s\n  Data:%59s\n  Version:%38s\n  OS/ABI:%43s\n  ABI Version:%24d\n  Type:%54s\n  Machine:%29d\n  Version:%#30x\n  Entry point address:%#20lx\n  Start of program headers:%12ld (bytes into file)\n  Start of section headers:%15ld (bytes into file)\n  Flags:%#30x\n  Size of this header:%17d (bytes)\n  Size of program headers:%13d (bytes)\n  Number of program headers:%10d\n  Size of section headers:%13d (bytes)\n  Number of section headers:%11d\n", 
+    printf("  Class:%34s\n  Data:%59s\n  Version:%38s\n  OS/ABI:%43s\n"
+        "  ABI Version:%24d\n  Type:%54s\n  Machine:%29d\n  Version:%#30x\n"  
+        "  Entry point address:%#20lx\n  Start of program headers:%12ld (bytes into file)\n"
+        "  Start of section headers:%15ld (bytes into file)\n  Flags:%#30x\n"
+        "  Size of this header:%17d (bytes)\n  Size of program headers:%13d (bytes)\n"
+        "  Number of program headers:%10d\n  Size of section headers:%13d (bytes)\n"
+        "  Number of section headers:%11d\n", 
                             ((ehdr->e_ident[EI_CLASS] == 0) ? "ELFNONE" : 
                             (ehdr->e_ident[EI_CLASS] == 1) ? "ELF32" :
                             "ELF64"),
