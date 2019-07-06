@@ -11,7 +11,7 @@
 
 int main(int argc, char **argv)
 {
-    int fd, opt; // test 
+    int fd, opt; 
     uint8_t *mem; // memory for executable
     struct stat st; // get file status
  
