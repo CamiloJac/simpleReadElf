@@ -10,6 +10,7 @@
 #include <fcntl.h>
 #include "programheader.h"
 #include "fileHeader.h"
+#include "sectionheader.h"
 
 int main(int argc, char **argv)
 {
@@ -46,13 +47,16 @@ int main(int argc, char **argv)
     while ((opt = getopt(argc, argv, "hlSs")) != -1) {
         switch (opt) {
         case 'h':
+            printf("You selected h!\n");
             dispFileHdr(mem);
             break;
         case 'l':
+            printf("You selected l!\n");
             parseL(mem);
             break;
         case 'S':
             printf("You selected S!\n");
+            parseSection(mem);
             break;
         case 's':
             printf("You selected s!\n!");
